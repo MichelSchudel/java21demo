@@ -1,6 +1,6 @@
 package org.example;
 
-
+// Run javadoc src/test/java/org/example/JavadocTest.java -d javadoc
 public class JavadocTest {
 
     /**
@@ -22,6 +22,7 @@ public class JavadocTest {
             System.out.println("This is a failure");
         }
     }
+
 
     /**
      * this is an example for inline snippets
