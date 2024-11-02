@@ -5,16 +5,17 @@ import org.junit.jupiter.api.Test;
 
 public class PatternMatchingTest {
 
-    record Point(Integer x, Integer y) {}
+    record Point(Integer x, Integer y) {
+    }
 
     @Test
     void test() {
 
         var point = new Point(1, 2);
         //java 17
-       oldStylePatternMatching(1);
-       oldStylePatternMatching("string");
-       oldStylePatternMatching(new RuntimeException());
+        oldStylePatternMatching(1);
+        oldStylePatternMatching("string");
+        oldStylePatternMatching(new RuntimeException());
 
         //java 21
         newStylePatternMatching(1);
@@ -28,7 +29,7 @@ public class PatternMatchingTest {
     void test2() {
 
         //java 17
-        //newStylePatternMatching(null);
+        newStylePatternMatching(null);
 
         newStylePatternMatchingNullSafe(null);
 
@@ -41,6 +42,8 @@ public class PatternMatchingTest {
             System.out.println("Object is an integer:" + i);
         } else if (obj instanceof String s) {
             System.out.println("Object is a string:" + s);
+        } else if (obj instanceof Point(Integer x, Integer y)) {
+            System.out.println("Object is a point:" + x + y);
         } else {
             System.out.println("Object is not recognized");
         }
@@ -48,20 +51,20 @@ public class PatternMatchingTest {
 
     //java 21
     private static void newStylePatternMatching(Object obj) {
-        switch(obj) {
-            case Integer i   -> System.out.println("Object is an integer:" + i);
-            case String s    -> System.out.println("Object is a string:" + s);
-            case Point(Integer x, Integer y)     -> System.out.println("Object is a point:" + x);
+        switch (obj) {
+            case Integer i -> System.out.println("Object is an integer:" + i);
+            case String s -> System.out.println("Object is a string:" + s);
+            case Point(Integer x, Integer y) -> System.out.println("Object is a point:" + x);
             default -> System.out.println("Object is not recognized");
         }
     }
 
     //java 21
     private static void newStylePatternMatchingNullSafe(Object obj) {
-        switch(obj) {
-            case Integer i   -> System.out.println("Object is an integer:" + i);
-            case String s    -> System.out.println("Object is a string:" + s);
-            case Point(Integer x, Integer y)     -> System.out.println("Object is a point:" + x);
+        switch (obj) {
+            case Integer i -> System.out.println("Object is an integer:" + i);
+            case String s -> System.out.println("Object is a string:" + s);
+            case Point(Integer x, Integer y) -> System.out.println("Object is a point:" + x);
             case null -> System.out.println("Object is null");
             default -> System.out.println("Object is not recognized");
         }

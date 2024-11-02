@@ -11,33 +11,66 @@ public class SequencedCollectionTest {
     void test() {
 
         //getting first element
-        List<String> list = List.of("s", "t");
-        list.get(0);
+        List<String> list = new ArrayList<>(List.of("devoxx", "j-fall"));
+        //get first
+        var firstElement = list.get(0);
+        //get last
+        var lastElement = list.get(list.size() - 1);
+        //add first
+        list.add(0, "voxxed");
+        //add last
+        list.add(list.size() - 1, "javazone");
+        //reverse
+        var mutableList = new ArrayList<String>(list);
+        Collections.reverse(mutableList); // ugly!!!!
 
         //java 21
         list.getFirst();
+        list.getLast();
+        list.reversed();
 
-        //Dequeue uses getFirst()
-        ArrayDeque q = new ArrayDeque<String>();
-        q.getFirst();
+        //linked hash set
+        var linkedHashSet = new LinkedHashSet<String>();
+        linkedHashSet.add("devoxx");
+        linkedHashSet.add("j-fall");
+
+        //first element
+        var firstSetElement = linkedHashSet.iterator().next();
+
+        //last element
+        var lastSetElement = linkedHashSet.toArray()[linkedHashSet.size()-1];
+
+        //reverse
+        var mutableHashList = new ArrayList<>(linkedHashSet);
+        Collections.reverse(mutableList); // ugly!!!!
+
+
+        LinkedHashSet<String> reversedSet = new LinkedHashSet<>(mutableList);
 
         //java 21
-        q.getFirst();
+        linkedHashSet.getFirst();
+        linkedHashSet.getLast();
+        linkedHashSet.reversed();
 
-        //Set uses first
+        //TreeSet
         var s = new TreeSet<String>();
-        s.add("d");
-        s.first();
+        s.add("devoxx");
+        s.add("j-fall");
+
+        //first element
+        var firstTreeSetElement = s.first();
+
+        //last element
+        var lastTreeSetElement = s.last();
+
+        //reverse
+        var reversedTreeSet = s.descendingSet();
 
         //java 21
         s.getFirst();
+        s.getLast();
+        s.reversed();
 
-        //linked hash set
-        var ls = new LinkedHashSet<String>();
-        ls.iterator().next();
-
-        //java 21
-        ls.getFirst();
 
         //linked hash map
         var sm = new LinkedHashMap<String,String>();
@@ -45,6 +78,9 @@ public class SequencedCollectionTest {
 
         //java 21
         sm.firstEntry();
+        sm.lastEntry();
+        sm.reversed();
+
 
 
 

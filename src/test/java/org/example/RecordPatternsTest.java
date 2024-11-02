@@ -7,6 +7,8 @@ import java.util.*;
 
 public class RecordPatternsTest {
 
+    //live template prefix: rp
+
     record Point(Integer x, Integer y) {}
 
     record SpecialPoint(Point p, boolean b) {}
