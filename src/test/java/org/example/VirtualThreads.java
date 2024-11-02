@@ -1,19 +1,22 @@
 package org.example;
 
+import org.junit.jupiter.api.Test;
+
 import java.time.Duration;
 import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
 
 public class VirtualThreads {
 
-    public static void main(String[] args) {
-        testPlatformThreads(1000);
-        testPlatformThreads(10_000);
-        testPlatformThreads(100_000);
-        testPlatformThreads(1_000_000);
+    @Test
+    public void testVirtualThreads() {
+        testVirtualThreads(1000);
+        testVirtualThreads(10_000);
+        testVirtualThreads(100_000);
+        testVirtualThreads(1_000_000);
     }
 
-    private static void testPlatformThreads(int maximum) {
+    private void testVirtualThreads(int maximum) {
         long time = System.currentTimeMillis();
 
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
