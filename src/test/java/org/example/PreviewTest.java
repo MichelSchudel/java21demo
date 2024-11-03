@@ -2,8 +2,9 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import static java.lang.StringTemplate.STR;
-
+/**
+ * DROPPED
+ */
 public class PreviewTest {
 
     @Test
