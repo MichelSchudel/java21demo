@@ -11,13 +11,14 @@ public class CaseRefinementTest {
         }
 
     @Test
-    void test() {
+    void demonstrate_case_refinement() {
 
         //java 17
         inefficientCaseRefinement(FruitType.APPLE);
 
         //java 21
         caseRefinement(FruitType.APPLE);
+
         nicerCaseRefinement(FruitType.APPLE);
 
     }
@@ -39,6 +40,7 @@ public class CaseRefinementTest {
             default -> System.out.println("Object is not recognized");
         }
     }
+
     //java 21
     private static void caseRefinement(Object obj) {
         switch (obj) {

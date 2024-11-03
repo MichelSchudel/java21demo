@@ -14,7 +14,7 @@ public class RecordPatternsTest {
     record SpecialPoint(Point p, boolean b) {}
 
     @Test
-    void test() {
+    void demonstrate_record_patterns() {
 
         //java 17
         Object o = new Point(1,1);

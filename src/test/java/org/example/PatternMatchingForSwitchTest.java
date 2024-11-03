@@ -11,7 +11,7 @@ public class PatternMatchingForSwitchTest {
     }
 
     @Test
-    void test() {
+    void demonstrate_pattern_matching_for_switch() {
 
         var point = new Point(1, 2);
 

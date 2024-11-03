@@ -8,81 +8,75 @@ import java.util.*;
 public class SequencedCollectionTest {
 
     @Test
-    void test() {
+    void demonstrate_list() {
 
-        //getting first element
-        List<String> list = new ArrayList<>(List.of("devoxx", "j-fall"));
-        //get first
-        var firstElement = list.get(0);
-        //get last
-        var lastElement = list.get(list.size() - 1);
-        //add first
-        list.add(0, "voxxed");
-        //add last
-        list.add(list.size() - 1, "javazone");
-        //reverse
-        var mutableList = new ArrayList<String>(list);
-        Collections.reverse(mutableList); // ugly!!!!
+        var list = new ArrayList<>(List.of(
+                "devoxx",
+                "j-fall")
+        );
 
-        //java 21
-        list.getFirst();
-        list.getLast();
-        list.reversed();
-
-        //linked hash set
         var linkedHashSet = new LinkedHashSet<String>();
         linkedHashSet.add("devoxx");
         linkedHashSet.add("j-fall");
 
-        //first element
-        var firstSetElement = linkedHashSet.iterator().next();
+        var treeSet = new TreeSet<String>();
+        treeSet.add("devoxx");
+        treeSet.add("j-fall");
 
-        //last element
-        var lastSetElement = linkedHashSet.toArray()[linkedHashSet.size()-1];
+        //get first
+        print(list.get(0));
+        print(linkedHashSet.iterator().next());
+        print(treeSet.first());
 
-        //reverse
+        //get last
+        print(list.get(list.size() - 1));
+        print(linkedHashSet.toArray()[linkedHashSet.size()-1]);
+        print(treeSet.last());
+
+        //reverse list
+        var mutableList = new ArrayList<>(list);
+        Collections.reverse(mutableList);
+        print(mutableList);
+
         var mutableHashList = new ArrayList<>(linkedHashSet);
-        Collections.reverse(mutableList); // ugly!!!!
+        Collections.reverse(mutableHashList);
+        LinkedHashSet<String> reversedSet = new LinkedHashSet<>(mutableHashList);
+        print(reversedSet);
 
+        print(treeSet.descendingSet());
 
-        LinkedHashSet<String> reversedSet = new LinkedHashSet<>(mutableList);
-
-        //java 21
-        linkedHashSet.getFirst();
-        linkedHashSet.getLast();
-        linkedHashSet.reversed();
-
-        //TreeSet
-        var s = new TreeSet<String>();
-        s.add("devoxx");
-        s.add("j-fall");
-
-        //first element
-        var firstTreeSetElement = s.first();
-
-        //last element
-        var lastTreeSetElement = s.last();
-
-        //reverse
-        var reversedTreeSet = s.descendingSet();
+        //add first...
+        //add last...
 
         //java 21
-        s.getFirst();
-        s.getLast();
-        s.reversed();
+        list.getFirst();
+        list.getLast();
+        list.addFirst("voxxed");
+        list.addLast("javazone");
+        list.reversed();
 
+    }
 
-        //linked hash map
-        var sm = new LinkedHashMap<String,String>();
-        sm.entrySet().iterator().next();
+    @Test
+    void demonstrate_map() {
+        var linkedHashMap = new LinkedHashMap<String,String>();
+        linkedHashMap.put("conference1", "devoxx");
+        linkedHashMap.put("conference2", "j-fall");
+
+        //first entry
+        print(linkedHashMap.entrySet().iterator().next());
+        //last entry
+        print(linkedHashMap.entrySet().toArray()[linkedHashMap.size()-1]);
 
         //java 21
-        sm.firstEntry();
-        sm.lastEntry();
-        sm.reversed();
+        print(linkedHashMap.firstEntry());
+        print(linkedHashMap.lastEntry());
+        print(linkedHashMap.reversed());
+        print(linkedHashMap.pollFirstEntry());
+        print(linkedHashMap.pollLastEntry());
+    }
 
-
-
-
+    private void print(Object o) {
+        System.out.println(o);
     }
 }
