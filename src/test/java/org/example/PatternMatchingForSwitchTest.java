@@ -3,7 +3,9 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-public class PatternMatchingTest {
+public class PatternMatchingForSwitchTest {
+
+    //live template key: pm
 
     record Point(Integer x, Integer y) {
     }
@@ -12,27 +14,19 @@ public class PatternMatchingTest {
     void test() {
 
         var point = new Point(1, 2);
+
         //java 17
         oldStylePatternMatching(1);
         oldStylePatternMatching("string");
+        oldStylePatternMatching(point);
         oldStylePatternMatching(new RuntimeException());
 
         //java 21
         newStylePatternMatching(1);
         newStylePatternMatching("string");
-        newStylePatternMatching(new RuntimeException());
         newStylePatternMatching(point);
-
-    }
-
-    @Test
-    void test2() {
-
-        //java 17
+        newStylePatternMatching(new RuntimeException());
         newStylePatternMatching(null);
-
-        newStylePatternMatchingNullSafe(null);
-
 
     }
 
@@ -51,16 +45,6 @@ public class PatternMatchingTest {
 
     //java 21
     private static void newStylePatternMatching(Object obj) {
-        switch (obj) {
-            case Integer i -> System.out.println("Object is an integer:" + i);
-            case String s -> System.out.println("Object is a string:" + s);
-            case Point(Integer x, Integer y) -> System.out.println("Object is a point:" + x);
-            default -> System.out.println("Object is not recognized");
-        }
-    }
-
-    //java 21
-    private static void newStylePatternMatchingNullSafe(Object obj) {
         switch (obj) {
             case Integer i -> System.out.println("Object is an integer:" + i);
             case String s -> System.out.println("Object is a string:" + s);
