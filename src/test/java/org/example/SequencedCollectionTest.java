@@ -7,6 +7,8 @@ import java.util.*;
 
 public class SequencedCollectionTest {
 
+    //live template key: sc
+
     @Test
     void demonstrate_list() {
 
